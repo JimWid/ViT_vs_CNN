@@ -1,1 +1,4 @@
-venv
+# Ignores venv
+/venv
+
+/vit-small
