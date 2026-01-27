@@ -1,4 +1,6 @@
 # Ignores venv
 /venv
 
-/vit-small
+/vit-fine-tuned
+
+/data
