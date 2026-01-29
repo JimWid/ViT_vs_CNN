@@ -16,7 +16,7 @@ How do pretrained Vision Transformers compare to CNNs when trained with limeted 
 | Training (ResNet-18) | 50,000  |
 | Validation/Test      | 10,000  |
 
-> Training set sizes differ between models. This is intentional and discussed in the analysis.
+> Training set sizes differ between models. This is discussed in the analysis.
 
 ## Models
 ### Vision Transformer (ViT)
@@ -75,7 +75,7 @@ How do pretrained Vision Transformers compare to CNNs when trained with limeted 
 | ViT-B/16       |    ~0.019        |         ~0.254 |         93.60% |      ~73 mins |
 | RestNet-18 CNN |          ~0.306  |         ~0.435 |         85.86% |       ~6 mins |
 1. In the ViT, accuracy is already high in epoch 1, this is a big signal of how pretrained models helps for fine-tuning in a small data regimes, even with far less samples.
-2. The CNN model improves train loss, val loss and accuracy gradually and stays up with 85.86% of accuracy, with yes the whole dataset, but with significant fraction of time compared to the ViT model (TI hypothesys that ViT time was high due to the preprocessing 32x32 -> 224x224).
+2. The CNN model improves train loss, val loss and accuracy gradually and stays up with 85.86% of accuracy, with yes the whole dataset, but with significant fraction of time compared to the ViT model (I hypothesize that ViT time was high due to the preprocessing of images, going from 32x32 to 224x224).
 3. The ViT model shows signs of rapid learning from 0.368 training loss to 0.0271 already at epoch 7. Vaidation loss stops improving after epoch 2, staying the same for all the next epochs. Meaning there is a mild overfitting, since there is no improvement.
 4. While the ViT required approximately 70 minutes of training, the ResNet-18 achieved high accuracy within 6–7 minutes on the same hardware.
 ## Analysis
@@ -84,7 +84,7 @@ Despite this, the results highlighted the strong sample efficiency of a large-sc
 At the same time, this experiment exposed the significant computational cost associated with fine-tuning large pretrained transformers.
 This highlights an important trade-off: although pretrained ViTs can be highly sample-efficient, CNNs such as ResNet-18 remain attractive in practice due to their computational efficiency and faster convergence.
 ## Conclusion
-Concluding this experiment, When heavily pretrained on large-scale datasets, Vision Transformers exhibit strong sample efficiency and can generalize well with very limited labeled data, often outperforming smaller CNNs such as ResNet-18 under the same fine-tuning conditions. However, In contrast, the ResNet-18 model, trained on the full dataset, converged substantially faster and reached competitive accuracy within a fraction of the training time. This contrast illustrates a trade-off between sample efficiency and computational efficiency, emphasizing that CNNs remain a strong practical choice in scenarios with limited computational resources.
+Giving the observation of this experiment, heavily pretrained on large-scale datasets, Vision Transformers exhibit strong sample efficiency and can generalize well with very limited labeled data, often outperforming smaller CNNs such as ResNet-18 under the same fine-tuning conditions. However, In contrast, the ResNet-18 model, trained on the full dataset, converged substantially faster and reached competitive accuracy within a fraction of the training time. This contrast illustrates a trade-off between sample efficiency and computational efficiency, emphasizing that CNNs remain a strong practical choice in scenarios with limited computational resources.
 
 ## Reproducibility
 If you want to reproduce this experiment simply copy this repo or download it! Just make sure to have:
